@@ -1,8 +1,29 @@
-# tode
+# validator-service-poc
 
-Opinionated bare minimum to write node applications in typescript.
+simple POC microservice to validate code on the fly
 
-> We are all waiting for [deno](https://deno.land/)
+## Endpoints
+
+`/code/validate/js`
+
+Example request:
+
+```
+curl --location --request POST 'http://localhost:4242/code/validate/js' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "code": "() => { let test = 'world'\nconsole.log(`hello ${test}`)}"
+}'
+```
+
+response:
+
+```json
+{
+  "code": "\"use strict\";(function(){var test=world;console.log(\"hello \".concat(test));});",
+  "error": false
+}
+```
 
 ## requirements
 

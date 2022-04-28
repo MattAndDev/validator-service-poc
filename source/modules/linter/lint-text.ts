@@ -6,6 +6,9 @@ export const lintText = async (
     useEslintrc: false,
     baseConfig: {
       extends: 'eslint:recommended',
+      env: {
+        es6: true,
+      },
     },
   }
 ): Promise<{

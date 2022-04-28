@@ -9,5 +9,6 @@ describe('lintText', () => {
     expect(await lintText('a')).toEqual({ error: false })
     expect(await lintText('undefined')).toEqual({ error: false })
     expect(await lintText('function empty () {}')).toEqual({ error: false })
+    expect(await lintText('() => {}')).toEqual({ error: false })
   })
 })

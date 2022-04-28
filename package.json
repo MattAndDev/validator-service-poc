@@ -1,10 +1,11 @@
 {
-  "name": "tode",
+  "name": "validator-service-poc",
   "version": "0.1.0",
-  "description": "opinionated typescript & node bare metal",
+  "description": "simple POC microservice to validate code on the fly",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch 'source/**/*.ts' --exec 'ts-node' source/index.ts",
+    "compile": "tsc",
     "start": "tsc && node ./build/index.js",
     "test": "jest ./source/*",
     "test:watch": "jest --watch ./source/*"
