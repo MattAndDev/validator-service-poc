@@ -2,9 +2,17 @@
 
 simple POC microservice to validate code on the fly
 
+## Up and running
+
+```bash
+docker run -d -p 4242:4242 mattanddev/validator-service-poc
+```
+
 ## Endpoints
 
 `/code/validate/js`
+
+Validates and transpiles provided `code`
 
 Example request:
 
@@ -25,20 +33,22 @@ response:
 }
 ```
 
-## requirements
+## run locally
+
+### requirements
 
 node && npm
 
-## commands
+### commands
 
-### `npm start`
+#### `npm start`
 
 compiles and runs `./source` with node
 
-### `npm run dev`
+#### `npm run dev`
 
 compiles-watch `./source` in memory with [nodemon](https://www.npmjs.com/package/nodemon) and [ts-node](https://github.com/TypeStrong/ts-node)
 
-### `npm run test`
+#### `npm run test`
 
 runs [jest](https://jestjs.io/) on `./source/**/*.test.ts`
