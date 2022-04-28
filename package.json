@@ -45,6 +45,8 @@
   "dependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
-    "fastify": "^3.28.0"
+    "@rollup/plugin-virtual": "^2.1.0",
+    "fastify": "^3.28.0",
+    "rollup": "^2.70.2"
   }
 }

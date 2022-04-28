@@ -12,7 +12,16 @@ export const transpileText = (
     // those methods will go unchecked and break in older browsers
     const transformed = transformSync(code, {
       browserslistEnv: 'defaults, not dead',
-      presets: ['@babel/preset-env'],
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            modules: false,
+            useBuiltIns: 'usage',
+          },
+        ],
+      ],
+      sourceType: 'script',
       compact: true,
     })
     return {
