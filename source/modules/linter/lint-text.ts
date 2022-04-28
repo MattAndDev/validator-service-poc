@@ -15,6 +15,9 @@ export const lintText = async (
   error: boolean
 }> => {
   const linter = new ESLint(opts)
+  // @TODO
+  // eslint output is very verbose and has A LOT of information about what is wrong
+  // this data coudl be formatted and returned to enhance debugging
   const output = await linter.lintText(code)
   return {
     error: !!output[0].fatalErrorCount,
