@@ -1,35 +1,33 @@
-import { rollup } from 'rollup'
-import virtual from '@rollup/plugin-virtual'
+import { OutputOptions, rollup } from 'rollup'
+import * as commonjs from '@rollup/plugin-commonjs'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import { unlinkSync, writeFileSync } from 'fs'
+import { resolve } from 'path'
+
+const outOpts: OutputOptions = {
+  format: 'iife',
+}
 
 export const bundleText = async (code: string) => {
-  let bundle
-  let buildFailed = false
+  const localFile = resolve(__dirname, './test.js')
+  writeFileSync(localFile, code)
   try {
     // create a bundle
-    bundle = await rollup({
-      input: 'entry',
+    const bundle = await rollup({
+      input: resolve(__dirname, './test.js'),
+      treeshake: false,
       plugins: [
-        virtual({
-          entry: `
-import batman from 'batcave';
-console.log(batman);
-`,
-        }),
+        nodeResolve({ moduleDirectories: [resolve('./node_modules')] }),
+        // @ts-ignore
+        commonjs(),
       ],
     })
 
-    // an array of file names this bundle depends on
-    console.log(bundle.watchFiles)
-
-    await generateOutputs(bundle)
-  } catch (error) {
-    buildFailed = true
-    // do some error reporting
-    console.error(error)
-  }
-  if (bundle) {
-    // closes the bundle
+    const { output } = await bundle.generate(outOpts)
     await bundle.close()
+    await unlinkSync(localFile)
+    return { error: false, code: output[0].code }
+  } catch (error) {
+    return { error: true }
   }
-  process.exit(buildFailed ? 1 : 0)
 }

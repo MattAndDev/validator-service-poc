@@ -4,7 +4,7 @@ export const transpileText = (
   code: string
 ): {
   error: boolean
-  code?: string | null
+  code?: string
 } => {
   try {
     // @TODO
@@ -18,14 +18,18 @@ export const transpileText = (
           {
             modules: false,
             useBuiltIns: 'usage',
+            corejs: '3.22.4',
           },
         ],
       ],
       sourceType: 'script',
       compact: true,
     })
+    if (!transformed || !('code' in transformed) || transformed.code === null) {
+      return { error: true }
+    }
     return {
-      code: transformed?.code,
+      code: transformed.code,
       error: false,
     }
   } catch {
