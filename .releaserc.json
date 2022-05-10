@@ -1,5 +1,5 @@
 {
-  "branches": ["micro-bundle"],
+  "branches": ["main"],
   "plugins": [
     [
       "semantic-release-gitmoji",
