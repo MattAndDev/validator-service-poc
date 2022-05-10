@@ -8,7 +8,8 @@
     "compile": "tsc",
     "start": "tsc && node ./build/index.js",
     "test": "jest ./source/*",
-    "test:watch": "jest --watch ./source/*"
+    "test:watch": "jest --watch ./source/*",
+    "release": "semantic-release"
   },
   "keywords": [],
   "devDependencies": {
