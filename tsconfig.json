@@ -10,10 +10,10 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "strict": true,
-    "baseUrl": "./",
+    "baseUrl": "./source",
     "paths": {
-      "routes/*": ["./source/routes/*"],
-      "modules/*": ["./source/modules/*"]
+      "routes/*": ["./routes/*"],
+      "modules/*": ["./modules/*"]
     }
   },
   "include": ["./source/**/*"],
