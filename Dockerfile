@@ -10,5 +10,6 @@ FROM node:18-alpine
 WORKDIR /app
 COPY --from=builder /app/build /app/build
 COPY --from=builder /app/node_modules /app/node_modules
+COPY --from=builder /app/tsconfig.json /app/tsconfig.json
 EXPOSE 4242
-CMD ["node", "/app/build/index.js"]  
+CMD ["node", "-r", "tsconfig-paths/register", "/app/build/index.js"]  
