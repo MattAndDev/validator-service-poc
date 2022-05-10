@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: mattanddev/validator-service-poc-test:$RELEASE_VERSION
+          tags: mattanddev/validator-service-poc-test:${{github.ref_name}}
