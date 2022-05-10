@@ -15,4 +15,5 @@ jobs:
         with:
           node-version: 14
           cache: 'npm'
-      - run: npm ci && npm run release
+      - run: npm i
+      - run: npm run release
