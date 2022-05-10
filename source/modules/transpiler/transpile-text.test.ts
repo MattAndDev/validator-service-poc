@@ -1,15 +1,10 @@
 import { transpileText } from './transpile-text'
 
 describe('transpileText', () => {
-  it('Transpiles to ES 5', () => {
-    expect(transpileText('() => { console.log(`hello`) }')).toEqual({
-      code: '"use strict";(function(){console.log("hello");});',
+  it('Adds polyfills', () => {
+    expect(transpileText('new Promise((resolve,reject) => {})')).toEqual({
+      code: 'require("core-js/modules/es.object.to-string.js");require("core-js/modules/es.promise.js");new Promise(function(resolve,reject){});',
       error: false,
-    })
-  })
-  it('Errors with syntax error', () => {
-    expect(transpileText('()aa => { console.log(`hello`) }')).toEqual({
-      error: true,
     })
   })
 })
