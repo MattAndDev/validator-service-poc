@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'main'
+      - 'micro-bundle'
 
 jobs:
   docker:
@@ -25,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: mattanddev/validator-service-poc:latest
+          tags: mattanddev/validator-service-poc-test:$RELEASE_VERSION
