@@ -6,7 +6,7 @@ on:
       - 'main'
 
 jobs:
-  docker:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -15,5 +15,4 @@ jobs:
         with:
           node-version: 14
           cache: 'npm'
-      - run: npm ci
-      - run: npm run release
+      - run: npm ci && npm run release
