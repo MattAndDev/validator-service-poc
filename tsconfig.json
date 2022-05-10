@@ -9,16 +9,8 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "strict": true,
-    "baseUrl": "./source",
-    "paths": {
-      "routes/*": ["./routes/*"],
-      "modules/*": ["./modules/*"]
-    }
+    "strict": true
   },
   "include": ["./source/**/*"],
-  "exclude": ["./source/**/*.test"],
-  "ts-node": {
-    "require": ["tsconfig-paths/register"]
-  }
+  "exclude": ["./source/**/*.test"]
 }

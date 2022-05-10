@@ -45,12 +45,6 @@
   "dependencies": {
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11",
-    "@rollup/plugin-commonjs": "^22.0.0",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-virtual": "^2.1.0",
-    "core-js": "^3.22.4",
-    "fastify": "^3.28.0",
-    "rollup": "^2.70.2",
-    "tsconfig-paths": "^4.0.0"
+    "fastify": "^3.28.0"
   }
 }

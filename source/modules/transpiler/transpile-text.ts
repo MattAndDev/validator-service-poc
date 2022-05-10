@@ -4,7 +4,7 @@ export const transpileText = (
   code: string
 ): {
   error: boolean
-  code?: string
+  code?: string | null
 } => {
   try {
     // @TODO
@@ -12,24 +12,11 @@ export const transpileText = (
     // those methods will go unchecked and break in older browsers
     const transformed = transformSync(code, {
       browserslistEnv: 'defaults, not dead',
-      presets: [
-        [
-          '@babel/preset-env',
-          {
-            modules: false,
-            useBuiltIns: 'usage',
-            corejs: '3.22.4',
-          },
-        ],
-      ],
-      sourceType: 'script',
+      presets: ['@babel/preset-env'],
       compact: true,
     })
-    if (!transformed || !('code' in transformed) || transformed.code === null) {
-      return { error: true }
-    }
     return {
-      code: transformed.code,
+      code: transformed?.code,
       error: false,
     }
   } catch {
